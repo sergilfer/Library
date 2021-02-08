@@ -1,5 +1,7 @@
 package org.iesfm.library;
 
+import org.iesfm.library.exceptions.MemberNotFoundException;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -9,8 +11,13 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Book book = readBook();
-        book.info();
+        Library library = new Library("Mi libreria", new Book[0], new Member[0], new BookLend[0]);
+        try{
+            String nif = scan. nextLine();
+            library.showMemberInfo(nif);
+        }catch (MemberNotFoundException e){
+            System.out.println("no se ha encontrado al socio " + e.getNif());
+        }
     }
 
     static Book readBook() {
@@ -40,6 +47,5 @@ public class Main {
         }
         return isbn;
     }
-
 
 }
